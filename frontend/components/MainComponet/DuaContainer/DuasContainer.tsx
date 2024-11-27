@@ -2,12 +2,10 @@ import React from 'react'
 import SubItemContainer from './SubItems/SubItemContainer'
 import { subcat } from '@/Types/type'
 import { Params } from '../MainContainer'
+import { getSubCat } from '@/lib/helper/getSubCat'
 
 export default async function DuasContainer({params}:{params:Params}) {
- 
-  
-  const res = await fetch(`${process.env.BASE_URL}/subcat/${params?.cat_id|| 1}`)
-  const data:subcat[] = await res.json()
+  const data = await getSubCat(params?.cat_id||1)
   const items = data?.map((item,index)=>(
 <SubItemContainer subcat={item} key={index}/>
   ))

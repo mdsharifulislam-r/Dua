@@ -1,10 +1,10 @@
 import React from 'react'
 import SubItem from './SubItem'
 import { dua, subcat } from '@/Types/type'
+import { getDuas } from '@/lib/helper/getSubCat'
 
 export default async function SubItemContainer({subcat}:{subcat:subcat}) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/duas/${subcat?.subcat_id}`)
-  const duas:dua[] = await res?.json()
+  const duas = await getDuas(subcat?.subcat_id)
   const duaItems = duas?.map((item,idx)=>(
     <SubItem dua={item} key={idx}/>
   ))

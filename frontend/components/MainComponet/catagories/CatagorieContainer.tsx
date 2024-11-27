@@ -1,10 +1,10 @@
 import React from 'react'
 import CatagorieBox from './CatagorieBox'
 import { cat } from '@/Types/type'
+import { getCat } from '@/lib/helper/getSubCat'
 
 export default async function CatagorieContainer() {
-  const res = await fetch(`${process.env.BASE_URL}/cat`)
-  const data:cat[] = await res.json()
+  const data = await getCat()
   const cats = data?.map((item,index)=>(
     <CatagorieBox cat={item} key={item?.cat_id+index} />
   ))
