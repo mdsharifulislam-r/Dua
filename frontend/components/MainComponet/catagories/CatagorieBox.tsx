@@ -22,7 +22,7 @@ export default function CatagorieBox({cat}:{cat:cat}) {
   return (
     <div className="overflow-hidden">
       <input type="checkbox" name="" hidden className="peer/input" id={cat?.cat_id.toString()} />
-      <label htmlFor={cat?.cat_id.toString()} className="flex w-full place-items-start justify-between rounded-md p-4 cursor-pointer hover:bg-slate-100">
+      <label htmlFor={cat?.cat_id.toString()} onClick={navigate} className="flex w-full place-items-start justify-between rounded-md p-4 cursor-pointer hover:bg-slate-100">
         <div  className="flex gap-3">
           <div className="image p-3 bg-slate-100 rounded-xl">
             <Image
