@@ -15,6 +15,8 @@ export default function CatagorieBox({cat}:{cat:cat}) {
 
   const navigate = () =>{
     isOpen(!open)
+    console.log(open);
+    
     router.push(`/?cat_id=${cat?.cat_id}`)
   }
   return (
@@ -44,7 +46,7 @@ export default function CatagorieBox({cat}:{cat:cat}) {
           <span className="text-slate-500">Duas</span>
         </div>
       </button>
-      <div className={`flex justify-end  transition-[height] duration-300 ${open?'h-full':'h-0'}`}>
+      <div className={` justify-end  transition-[height] duration-300 ${open?'flex':'hidden'}`}>
       <SubCatagories cat_id={cat?.cat_id}/>
       </div>
       
