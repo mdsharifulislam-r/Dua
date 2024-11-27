@@ -12,14 +12,15 @@ import Link from "next/link";
 export default function CatagorieBox({cat}:{cat:cat}) {
   const router = useRouter()
   const [open,isOpen]=useState(false)
+
+  const navigate = () =>{
+    isOpen(!open)
+    router.push(`/?cat_id=${cat?.cat_id}`)
+  }
   return (
     <div className="overflow-hidden">
       <input type="checkbox" name="" hidden className="peer/input" id={cat?.cat_id.toString()} />
-      <div onClick={()=>{
-        isOpen(!open)
-        router.push(`/?cat_id=${cat?.cat_id}`)
-       
-        }} className="flex place-items-start justify-between rounded-md p-4 cursor-pointer hover:bg-slate-100">
+      <button onClick={navigate} className="flex w-full place-items-start justify-between rounded-md p-4 cursor-pointer hover:bg-slate-100">
         <div  className="flex gap-3">
           <div className="image p-3 bg-slate-100 rounded-xl">
             <Image
@@ -30,7 +31,7 @@ export default function CatagorieBox({cat}:{cat:cat}) {
               height={100}
             />
           </div>
-          <div className="text">
+          <div className="text text-left">
             <h1 className="tex-base font-semibold text-primary_color">
               {cat?.cat_name_en}
             </h1>
@@ -42,7 +43,7 @@ export default function CatagorieBox({cat}:{cat:cat}) {
           <h1 className="font-bold">{cat?.no_of_dua}</h1>
           <span className="text-slate-500">Duas</span>
         </div>
-      </div>
+      </button>
       <div className={`flex justify-end  transition-[height] duration-300 ${open?'h-full':'h-0'}`}>
       <SubCatagories cat_id={cat?.cat_id}/>
       </div>
