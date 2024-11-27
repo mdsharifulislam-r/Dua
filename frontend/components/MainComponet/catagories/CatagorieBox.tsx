@@ -15,7 +15,11 @@ export default function CatagorieBox({cat}:{cat:cat}) {
   return (
     <div className="overflow-hidden">
       <input type="checkbox" name="" hidden className="peer/input" id={cat?.cat_id.toString()} />
-      <Link  href={`/?cat_id=${cat?.cat_id}`} onClick={()=>isOpen(!open)} className="flex place-items-start justify-between rounded-md p-4 cursor-pointer hover:bg-slate-100">
+      <div onClick={()=>{
+        isOpen(!open)
+        router.push(`/?cat_id=${cat?.cat_id}`)
+       
+        }} className="flex place-items-start justify-between rounded-md p-4 cursor-pointer hover:bg-slate-100">
         <div  className="flex gap-3">
           <div className="image p-3 bg-slate-100 rounded-xl">
             <Image
@@ -38,7 +42,7 @@ export default function CatagorieBox({cat}:{cat:cat}) {
           <h1 className="font-bold">{cat?.no_of_dua}</h1>
           <span className="text-slate-500">Duas</span>
         </div>
-      </Link>
+      </div>
       <div className={`flex justify-end  transition-[height] duration-300 ${open?'h-full':'h-0'}`}>
       <SubCatagories cat_id={cat?.cat_id}/>
       </div>
